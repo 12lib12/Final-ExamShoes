@@ -1,0 +1,344 @@
+.header-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+.navbar {
+    display: flex;
+    align-items: center; 
+}
+.navbar nav {
+    float: right;
+    width: 80%;
+    text-align: right;
+    
+}
+.navbar nav a, .navbar nav button{
+    padding: 10px 15px;
+    color: black;
+}
+
+.nav-header{
+    width: 20%;
+    color: #393e46;
+}
+.navbar .login {
+    background-color: black;
+    color: #d65a31;
+    border-radius: 20px;
+}
+.navbar .login:hover {
+    background: #d65a31;
+    color: black;
+}
+.dropdown {
+    /* display: none; */
+}
+ul.header-menu {
+    display: flex;
+    justify-content: right;
+    text-align: right;
+}
+ul.header-menu li {
+    position: relative;
+    padding: 10px;
+}
+a {
+    text-decoration: none;
+}
+
+ul.header-menu .dropdown-menu {
+    padding: initial !important;
+    text-align: left;
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    background: #000;
+    display: none;
+}
+
+ul.header-menu li:hover .dropdown-menu {
+    display: block;
+    background-color: darkgray;
+}
+.dropdown-menu li:hover {
+    background-color: #000;
+    color: #d65a31 ;
+}
+ul.header-menu .dropdown-menu li a {
+    color: #fff !important;
+}
+.main-header {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.main-header img {
+    height: 200px;
+    width: 230px;
+}
+
+.main-header div a:hover {
+    color: grey;
+    background-color: white;
+    border: 1px solid;
+    transition: 0.5s;
+}
+.main-header div {
+    margin: 10px;
+    padding: 20px;
+    border: 5px solid;
+}
+.main-header div:hover {
+    box-shadow: 5px 5px 7px gray;
+    transition: 0.5s;
+}
+.second-content {
+    margin: 80px 0;
+    background-color: darkgray;
+    padding: 20px 0;
+}
+
+.second-content div.row {
+    max-width: 60%;
+    margin: auto;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-content div.column {
+    width: 50%;
+}
+
+.second-content img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 3px double;
+}
+.testimoni {
+
+    color: white;
+    padding: 30px 0;
+}
+.testimoni > div {
+    background-color: #000;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    justify-content: center;
+    border-radius: 40px;
+}
+.testimoni img {
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+    border: 5px solid #d65a31;
+    border-radius:30px;
+}
+.main-footer > div{
+    display: flex;
+    justify-content: center;
+}
+.main-footer ul {
+    margin: 0px 80px;
+}
+footer {
+    background-color: #393e46;
+}
+.main-header div {
+    text-align: center;
+}
+
+.detail-header {
+    text-align: center;
+}
+.discPrice {
+    text-decoration: line-through; 
+    color: gray;
+    font-size: 20px;
+}
+.popup2{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    background-color: rgba(0,0,0, .8);
+}
+.popup{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    background-color: rgba(0,0,0, .8);
+}
+.popup-content{
+    padding: 40px;
+    border-radius: 5px;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50% );
+    background-color: white;
+}
+.popup-detail {
+    display: flex;
+    margin: 20px;
+}
+.img-popup img{
+    width: 300px;
+    height: 200px;
+}
+.popup-price{
+    margin-left: 80px;
+}
+.popup-price h1 {
+    color:#d65a31;
+}
+.popup-price h2 {
+    color: lightsalmon;
+}
+.size {
+    display: flex;
+}
+.detail-button {
+    border-top: 2px solid;
+}
+button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.nomarg{
+    margin: initial;
+
+    margin-right: 5px;
+}
+.detail-button button {
+    background-color: #000;
+    color: white;
+    font-size: 15px;
+    margin: 8px;
+    padding: 6px 20px;
+}
+
+.main-header div button{
+    font-size: 20px;
+    background-color: #000;
+    color: white;
+    margin: 0 6px;
+    padding: 5px 20px;
+    border-radius: 15px;
+    border: 1px solid transparent;
+}
+
+.main-header div button:hover {
+    border: 1px solid #000;
+    color: black;
+    background-color: white;
+}
+.popup-close{
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+    display: inline-block;
+    line-height: 1;
+}
+#qty{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-top: -4px;
+}
+
+#qty_plus {
+    background-color:#29bb89;
+    border:#289672 solid 2px;
+    border-radius:5px;
+    margin-right: 5px;
+}
+
+#qty_minus {
+    background-color: #ff4949;
+    border:#c10000 solid 2px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.keranjangImage {
+    width: 300px;
+    height: 200px;
+}
+.keranjangDetail{
+    border: 2px solid;
+}
+.isiKeranjang{
+    margin-left: 20px;
+}
+.infoKeranjang{
+    font-size: 20px;
+}
+.infoKeranjang p{
+    margin: 20px 20px;
+}
+.hapusKeranjang {
+    margin: 50px;
+}
+.hapusKeranjang button{
+    text-align: center;
+    margin-top: 20px;
+    background-color: lightgreen;
+}
+/* SMARTPHONES PORTRAIT */
+@media only screen and (min-width: 300px) {
+    
+
+}
+
+/* SMARTPHONES LANDSCAPE */
+@media only screen and (min-width: 480px) {
+    .second-content div.row{
+        max-width: 90%;
+    }
+    .copyright {
+        font-size: 20px;
+    }
+    .main-footer ul {
+        margin: 0px 20px;
+    }
+    .main-footer li h2{
+        font-size: 18px;
+    }
+    .navbar nav a {
+        padding: 10px 10px;
+    }
+}
+
+/* TABLETS PORTRAIT */
+@media only screen and (min-width: 768px) {
+    .testimoni > div {
+        width: 90%;
+    }
+
+}
+
+
+/* TABLET LANDSCAPE / DESKTOP */
+@media only screen and (min-width: 1024px) {
+    .main-footer ul {
+        margin: 0px 40px;
+    }
+
+} 

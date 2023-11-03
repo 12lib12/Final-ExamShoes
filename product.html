@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f90068558c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="content">
+    <header>
+        <div class="navbar">
+            <h1 class="nav-header">
+                Your <span style="color: #d65a31;">Shoes</span>
+            </h1>
+            <nav>
+            <ul class="header-menu" type="none">
+                <li><a href="">Home</a></li>
+                <li><a href="">Collection</a>
+                    <ul class="dropdown-menu" type="none">
+                        <li><a href="">Sneakers</a></li>
+                        <li><a href="">Slip on</a></li>
+                        <li><a href="">Boots</a></li>
+                        <li><a href="">Pantofels</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Brands</a></li>
+                <li><a href="">Sale</a></li>
+                <button class="login" @click="openKeranjang()">Cart()</button>
+                <div class="popup2" id="popup2">
+                    <div class="popup-content">
+                        <div class="popup-header">
+                            <h1>Isi Keranjang</h1>
+                        </div>
+                        <div class="keranjangDetail size">
+                            <img class="keranjangImage" src="images/basic-white-sneakers-unisex-streetwear-fashion-shoot.jpg" alt="">
+
+                            <div class="isiKeranjang">
+                                <h2>
+                                    Red Sneakers
+                                </h2>
+                                <div class="infoKeranjang size">
+                                    <p>size: </p>
+                                    <p>Jumlah: </p>
+                                </div>
+                                <div class="infoKeranjang size">
+                                    <p>Packaging: </p>
+                                    <p>Note: </p>
+                                </div>
+                                <h2></h2>
+                            </div>
+                            <div  class="hapusKeranjang">
+                                <button>Hapus</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h1>Total: </h1>
+                            <button>Buy</button>
+                            <button v-on:click="closeKeranjang()" class="popup-close">x</button>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-detail" id="content">
+            <div class="detail-header">
+                <h1>Product <span style="color: #d65a31;">Sale</span></h1>
+            </div>
+            <div class="main-header">
+                <div v-for="(variant, index) in variants" :key="index">
+                    <img :src="variant.variantImage" alt="">
+                    <h2>{{  variant.variantName  }}</h2>
+                    <p class="discPrice">{{ variant.variantPrice }}</p>
+                    <h3>{{ variant.variantDiscount }}</h3>
+                    <button @click="visibleButton(index)" id="variant">Details</button>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Modal -->
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h1>Detail Product</h1>
+                </div>
+                <div class="popup-detail">
+                    <div class="img-popup">
+                        <img :src="currentProductImage" alt="">
+                        <button v-on:click="invisibleButton()" class="popup-close">x</button>
+                    </div>
+                    <div class="popup-price">
+                        <h1>{{ currentProductName }}</h1>
+                        <p class="discPrice">{{ currentProductPrice }}</p>
+                        <h3><b>{{ currentProductDiscountPrice }}</b></h3>
+                        <div class="size">
+                            <h2 class="nomarg">Choose Size</h2>
+                            <select name="packaging" id="packaging">
+                                <option v-for="size in sizesOption" :value="size" >{{ size }}</option>
+                            </select>
+                        </div>
+                        <div id="quantity">
+                            <h2>Quantity</h2>
+                            <button v-on:click="qty_minus" id="qty_minus">-</button>
+                            <input type="text" name="" id="qty" v-model="qty" v-on:keyup.up="qty_plus" v-on:keyup.down="qty_minus" v-on:keyup.enter="buyNow">
+                            <button v-on:click="qty_plus" id="qty_plus">+</button>
+                        </div>
+                        <p>if you can not find your sizes, please kindly input here!</p>
+                        <div class="size">
+                            <h2 class="nomarg">Special Request</h2>
+                            <input type="text" v-model="specialRequest">
+                        </div>
+                        <h2>Packaging</h2>
+                        <div class="size">
+                            <label v-for="packaging in packagingOption">
+                                <input type="radio" name="packaging" :value="packaging" v-model="choosePackaging">{{ packaging }}
+                            </label>
+                        </div>
+                        <div class="detail-button size">
+                            <button v-show="qty > 0" @click="addToCart">Add To Cart</button>
+                            <button v-show="qty > 0" @click="buyNow">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>Description</h2>
+                    <p>
+                        Make your days more simply with Hatarika's sneakers Hatarika proudly presents Hatarika's Sneaker Edition. Made with a combination of twill fabric upper and white-colored<br>
+                        rubber,each pair gives the impression of shoes that have been lovingly kept and long unused. Express your simply style everyday with 5 different choice of colors. Wear the<br>
+                        sneakers to support your mood today, tomorrow and forever.
+                    </p>
+                </div>
+                <div class="spec size">
+                    <div>
+                        <h2>Specification</h2>
+                        <ul>
+                            <li>a</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Size Chart</h2>
+                        <ul>
+                            <li>b</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Modal -->
+        
+    </main>
+    <footer>
+        <div class="main-footer">
+            <div class="llll">
+                <ul type="none">
+                    <li><h2>Hatarika</h2>
+                        <li>Haratika</li>
+                        <li>Jl.Sudirman No.xxx</li>
+                        <li>Haratika@gmail.com</li>
+                        <li>(021) 2552-xxx</li>
+                    </li>
+                </ul>
+                <ul type="none">
+                    <li><h2>Hatarika Collection</h2>
+                        <li>Sneakers</li>
+                        <li>Slip on</li>
+                        <li>Boots</li>
+                        <li>Pantofel</li>
+                    </li>
+                </ul>
+                <ul type="none">
+                    <li><h2>Follow us on</h2>
+                        <i class="fab fa-instagram-square"></i>
+                        <i class="fab fa-twitter-square"></i>
+                        <i class="fab fa-facebook-square"></i>
+                        <i class="fas fa-envelope"></i>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h1 class="copyright">
+                    Copyright c 2022 Hatarika.co All Rights Reserved.
+                </h1>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
